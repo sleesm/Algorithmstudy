@@ -39,7 +39,7 @@ public:
 		}
 		node[i].setKey(key);
 	}
-    
+
 	HeapNode remove() {
 		if (isEmpty()) return NULL;
 
@@ -61,24 +61,24 @@ public:
 		node[parent] = last;
 		return root;
 	}
-    
+
 	HeapNode find() { return node[1]; }
 };
 
 int solution(vector<int> scoville, int K) {
-    MinHeap heap;
-    for(int i = 0; i< scoville.size(); i++)
-        heap.insert(scoville.at(i));
-    int count = 0;
-    while(heap.find().getKey() < K){
-        int first = heap.remove().getKey();
-        int second  = heap.remove().getKey();
-        heap.insert(first + second*2);  
-        count++;
-        if(count >= scoville.size()){
-            count = -1;
-            break;
-        }
-    }
-    return count;
+	MinHeap heap;
+	for (int i = 0; i < scoville.size(); i++)
+		heap.insert(scoville.at(i));
+	int count = 0;
+	while (heap.find().getKey() < K) {
+		int first = heap.remove().getKey();
+		int second = heap.remove().getKey();
+		heap.insert(first + second * 2);
+		count++;
+		if (count >= scoville.size()) {
+			count = -1;
+			break;
+		}
+	}
+	return count;
 }
